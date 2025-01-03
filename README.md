@@ -12,11 +12,12 @@ This project, **FBCNN-GUI**, provides an easy-to-use graphical user interface fo
 * **Batch Processing:** Supports processing multiple image files at once.
 * **One-Click Installation (Optional):** The provided `1.install&run.bat` script allows for quick environment configuration and program launch.
 
-## 🚀🚀 Some Visual Examples (Click to view the full image)
-
-| [![Original Image](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/kodak24_bpp0.746.png)](https://github.com/jiaxi-jiang/FBCNN/blob/main/figs/kodak24_bpp0.746.png) | [![FBCNN-D Result](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/kodak24_bpp0.746_fbcnn_d.png)](https://github.com/jiaxi-jiang/FBCNN/blob/main/figs/kodak24_bpp0.746_fbcnn_d.png) |
-|---|---|
-| [![Original Image](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/kodak03_bpp0.467.png)](https://github.com/jiaxi-jiang/FBCNN/blob/main/figs/kodak03_bpp0.467.png) | [![FBCNN-A Result](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/kodak03_bpp0.467_fbcnn_a.png)](https://github.com/jiaxi-jiang/FBCNN/blob/main/figs/kodak03_bpp0.467_fbcnn_a.png) |
+🚀🚀 Some Visual Examples (Click for full images)
+----------
+|[<img src="figs/v1_.png" width="400px"/>](https://imgsli.com/NzA3NTk) |[<img src="figs/v3_.png" width="400px"/>](https://imgsli.com/NzA3NjI)|
+|:---:|:---:|
+|[<img src="figs/v2_.png" width="400px"/>](https://imgsli.com/NzA3NjE) |[<img src="figs/v4_.png" width="400px"/>](https://imgsli.com/NzA3NjM)|
+|[<img src="figs/v5_.png" width="400px"/>](https://imgsli.com/NzA3NjQ) |[<img src="figs/v6_.png" width="400px"/>](https://imgsli.com/NzA3NjU)|
 
 ---
 
@@ -29,7 +30,7 @@ JPEG is one of the most widely used image compression algorithms and formats due
 * Most existing learning-based methods \[e.g., ARCNN, MWCNN, SwinIR] train a specific model for each quality factor, lacking the flexibility of learning a single model for different JPEG quality factors.
 * DCT-based methods \[e.g., DMCNN, QGAC] require obtaining DCT coefficients or quantization tables as input, which are only stored in the JPEG format. Moreover, when an image is compressed multiple times, only the most recent compression information is stored.
 * Existing blind methods \[e.g., DnCNN, DCSC, QGAC] can only provide deterministic reconstruction results for each input, ignoring the needs of user preference.
-* Existing methods are trained with synthetic images, assuming that low-quality images are only compressed once. **However, most images from the Internet are compressed multiple times.** Although some progress has been made on real recompressed images, such as images from Twitter \[ARCNN, DCSC], there is still a lack of detailed and complete research on double JPEG artifact removal.
+* Existing methods are trained with synthetic images, assuming that low-quality images are only compressed once. **However, most images from the Internet are compressed multiple times.** Although some progress has been made on real recompressed images, such as images from Twitter \[ARCNN, DCSC], there is still a lack of detailed 和 complete research on double JPEG artifact removal.
 
 ### Network Architecture
 
@@ -49,9 +50,9 @@ Unaligned double JPEG compression means that the 8x8 blocks of the two JPEG comp
 
 #### 2. Limitations of Existing Blind Methods in Restoring Unaligned Double JPEG Images
 
-We found that when the 8x8 blocks of the two JPEG compressions are unaligned and QF1 <= QF2, existing blind methods always fail even if there is only **one pixel shift**. Other situations, such as unaligned double JPEG with QF1>QF2 or aligned double JPEG compression, are actually equivalent to single JPEG compression.
+We found that when the 8x8 blocks of the two JPEG compressions are unaligned 和 QF1 <= QF2, existing blind methods always fail even if there is only **one pixel shift**. Other situations, such as unaligned double JPEG with QF1>QF2 or aligned double JPEG compression, are actually equivalent to single JPEG compression.
 
-Here is an example of the restoration results of JPEG images by DnCNN and QGAC under different degradation settings. '*' means there is a one-pixel shift between the two JPEG blocks.
+Here is an example of the restoration results of JPEG images by DnCNN 和 QGAC under different degradation settings. '*' means there is a one-pixel shift between the two JPEG blocks.
 
 ![lena_doublejpeg](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/lena_doublejpeg.png)
 
@@ -134,16 +135,6 @@ By mitigating the misalignment between the training data and real-world JPEG ima
 5. **Start Processing:** Click the "Start Processing" button to begin processing the selected images.
 6. **View Results:** The processed image will be displayed on the interface. You can switch between viewing the original and processed images.
 7. **Save Results:** You can save the currently processed image individually or save all processed images in batch.
-
-## Citation
-
-@inproceedings{jiang2021towards,
-title={Towards Flexible Blind JPEG Artifacts Removal},
-author={Jiang, Jiaxi and Zhang, Kai and Timofte, Radu},
-booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
-pages={4997--5006},
-year={2021}
-}
 
 
 ## License and Acknowledgement
