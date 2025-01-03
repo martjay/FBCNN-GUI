@@ -50,7 +50,7 @@ This project, **FBCNN-GUI**, provides an easy-to-use graphical user interface fo
     ```bash
     pip install -r requirements.txt
     ```
-6. **Download the following models from [Github Release](https://github.com/jiaxi-jiang/FBCNN/releases/tag/v1.0).
+6. **Download the following models from [Github Release](https://github.com/jiaxi-jiang/FBCNN/releases/tag/v1.0).**
     * fbcnn_color.pth 
     * fbcnn_gray.pth
     * fbcnn_gray_double.pth
