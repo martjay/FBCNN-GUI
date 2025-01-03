@@ -1,6 +1,6 @@
 # FBCNN-GUI: A User-Friendly Interface for Flexible Blind JPEG Artifacts Removal
 
-[![GitHub Stars](https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO_NAME?style=social)](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME)
+[![GitHub Stars](https://img.shields.io/github/stars/martjay/FBCNN-GUI?style=social)](https://github.com/martjay/FBCNN-GUI)
 
 This project, **FBCNN-GUI**, provides an easy-to-use graphical user interface for [**FBCNN**](https://github.com/jiaxi-jiang/FBCNN) (Towards Flexible Blind JPEG Artifacts Removal). FBCNN is a state-of-the-art deep learning model for removing artifacts from JPEG compressed images. This GUI allows users to easily load models, process images, and view results through intuitive operations, without the need for complex command-line instructions.
 
