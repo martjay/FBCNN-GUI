@@ -12,6 +12,15 @@ This project, **FBCNN-GUI**, provides an easy-to-use graphical user interface fo
 * **Batch Processing:** Supports processing multiple image files at once.
 * **One-Click Installation (Optional):** The provided `1.install&run.bat` script allows for quick environment configuration and program launch.
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-live1-quality-10)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-live1-quality-10?p=towards-flexible-blind-jpeg-artifacts-removal)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-live1-quality-10-1)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-live1-quality-10-1?p=towards-flexible-blind-jpeg-artifacts-removal)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-bsds500-quality)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-bsds500-quality?p=towards-flexible-blind-jpeg-artifacts-removal)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-bsds500-quality-3)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-bsds500-quality-3?p=towards-flexible-blind-jpeg-artifacts-removal)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-classic5-quality)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-classic5-quality?p=towards-flexible-blind-jpeg-artifacts-removal)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-icb-quality-10)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-icb-quality-10?p=towards-flexible-blind-jpeg-artifacts-removal)
+
+>Training a single deep blind model to handle different quality factors for JPEG image artifacts removal has been attracting considerable attention due to its convenience for practical usage. However, existing deep blind methods usually directly reconstruct the image without predicting the quality factor, thus lacking the flexibility to control the output as the non-blind methods. To remedy this problem, in this paper, we propose a flexible blind convolutional neural network, namely FBCNN, that can predict the adjustable quality factor to control the trade-off between artifacts removal and details preservation. Specifically, FBCNN decouples the quality factor from the JPEG image via a decoupler module and then embeds the predicted quality factor into the subsequent reconstructor module through a quality factor attention block for flexible control. Besides, we find existing methods are prone to fail on non-aligned double JPEG images even with only a one-pixel shift, and we thus propose a double JPEG degradation model to augment the training data. Extensive experiments on single JPEG images, more general double JPEG images, and real-world JPEG images demonstrate that our proposed FBCNN achieves favorable performance against state-of-the-art methods in terms of both quantitative metrics and visual quality.
+
 🚀🚀 Some Visual Examples (Click for full images)
 ----------
 |[<img src="figs/v1_.png" width="400px"/>](https://imgsli.com/NzA3NTk) |[<img src="figs/v3_.png" width="400px"/>](https://imgsli.com/NzA3NjI)|
@@ -43,9 +52,9 @@ We propose a flexible blind convolutional neural network (FBCNN) that can predic
 Unaligned double JPEG compression means that the 8x8 blocks of the two JPEG compressions are not aligned. For example, when we crop a JPEG image 和 save it as JPEG, it is very likely to get an unaligned double JPEG image. [real](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/real.png) There are many other common scenarios, including but not limited to:
 
 * Take a photo with a smartphone 和 upload it to the Internet. Most social media platforms, such as WeChat, Twitter, 和 Facebook, will resize the uploaded image by downsampling 和 then apply JPEG compression to save storage space.
-* Edit a JPEG image that introduces cropping, rotation, or resizing, and save it as JPEG.
-* Zoom in/out of a JPEG image, then take a screenshot and save it as JPEG.
-* Group different JPEG images and save them as a single JPEG image.
+* Edit a JPEG image that introduces cropping, rotation, or resizing, 和 save it as JPEG.
+* Zoom in/out of a JPEG image, then take a screenshot 和 save it as JPEG.
+* Group different JPEG images 和 save them as a single JPEG image.
 * Most memes are compressed multiple times and the situation is unaligned.
 
 #### 2. Limitations of Existing Blind Methods in Restoring Unaligned Double JPEG Images
