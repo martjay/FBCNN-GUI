@@ -33,15 +33,15 @@ JPEG is one of the most widely used image compression algorithms and formats due
 
 ### Network Architecture
 
-We propose a flexible blind convolutional neural network (FBCNN) that can predict the quality factor of a JPEG image and embed it into the decoder to guide image restoration. The quality factor can be manually adjusted for flexible JPEG restoration according to user preference. [architecture](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/architecture.png)
+We propose a flexible blind convolutional neural network (FBCNN) that can predict the quality factor of a JPEG image 和 embed it into the decoder to guide image restoration. The quality factor can be manually adjusted for flexible JPEG restoration according to user preference. [architecture](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/architecture.png)
 
 ### Analysis of Double JPEG Restoration
 
 #### 1. What is Unaligned Double JPEG Compression?
 
-Unaligned double JPEG compression means that the 8x8 blocks of the two JPEG compressions are not aligned. For example, when we crop a JPEG image and save it as JPEG, it is very likely to get an unaligned double JPEG image. [real](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/real.png) There are many other common scenarios, including but not limited to:
+Unaligned double JPEG compression means that the 8x8 blocks of the two JPEG compressions are not aligned. For example, when we crop a JPEG image 和 save it as JPEG, it is very likely to get an unaligned double JPEG image. [real](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/real.png) There are many other common scenarios, including but not limited to:
 
-* Take a photo with a smartphone and upload it to the Internet. Most social media platforms, such as WeChat, Twitter, and Facebook, will resize the uploaded image by downsampling and then apply JPEG compression to save storage space.
+* Take a photo with a smartphone 和 upload it to the Internet. Most social media platforms, such as WeChat, Twitter, 和 Facebook, will resize the uploaded image by downsampling 和 then apply JPEG compression to save storage space.
 * Edit a JPEG image that introduces cropping, rotation, or resizing, and save it as JPEG.
 * Zoom in/out of a JPEG image, then take a screenshot and save it as JPEG.
 * Group different JPEG images and save them as a single JPEG image.
@@ -115,7 +115,12 @@ By mitigating the misalignment between the training data and real-world JPEG ima
     ```bash
     pip install -r requirements.txt
     ```
-6. **Run the GUI:**
+6. **Download the following models from [Github Release](https://github.com/jiaxi-jiang/FBCNN/releases/tag/v1.0).
+    * fbcnn_color.pth 
+    * fbcnn_gray.pth
+    * fbcnn_gray_double.pth
+
+7. **Run the GUI:**
     ```bash
     python gui.py
     ```
