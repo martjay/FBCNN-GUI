@@ -12,90 +12,15 @@ This project, **FBCNN-GUI**, provides an easy-to-use graphical user interface fo
 * **Batch Processing:** Supports processing multiple image files at once.
 * **One-Click Installation (Optional):** The provided `1.install&run.bat` script allows for quick environment configuration and program launch.
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-live1-quality-10)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-live1-quality-10?p=towards-flexible-blind-jpeg-artifacts-removal)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-live1-quality-10-1)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-live1-quality-10-1?p=towards-flexible-blind-jpeg-artifacts-removal)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-bsds500-quality)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-bsds500-quality?p=towards-flexible-blind-jpeg-artifacts-removal)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-bsds500-quality-3)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-bsds500-quality-3?p=towards-flexible-blind-jpeg-artifacts-removal)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-classic5-quality)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-classic5-quality?p=towards-flexible-blind-jpeg-artifacts-removal)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/towards-flexible-blind-jpeg-artifacts-removal/jpeg-artifact-correction-on-icb-quality-10)](https://paperswithcode.com/sota/jpeg-artifact-correction-on-icb-quality-10?p=towards-flexible-blind-jpeg-artifacts-removal)
-
->Training a single deep blind model to handle different quality factors for JPEG image artifacts removal has been attracting considerable attention due to its convenience for practical usage. However, existing deep blind methods usually directly reconstruct the image without predicting the quality factor, thus lacking the flexibility to control the output as the non-blind methods. To remedy this problem, in this paper, we propose a flexible blind convolutional neural network, namely FBCNN, that can predict the adjustable quality factor to control the trade-off between artifacts removal and details preservation. Specifically, FBCNN decouples the quality factor from the JPEG image via a decoupler module and then embeds the predicted quality factor into the subsequent reconstructor module through a quality factor attention block for flexible control. Besides, we find existing methods are prone to fail on non-aligned double JPEG images even with only a one-pixel shift, and we thus propose a double JPEG degradation model to augment the training data. Extensive experiments on single JPEG images, more general double JPEG images, and real-world JPEG images demonstrate that our proposed FBCNN achieves favorable performance against state-of-the-art methods in terms of both quantitative metrics and visual quality.
-
 🚀🚀 Some Visual Examples (Click for full images)
 ----------
-|[<img src="figs/v1_.png" width="400px"/>](https://imgsli.com/NzA3NTk) |[<img src="figs/v3_.png" width="400px"/>](https://imgsli.com/NzA3NjI)|
-|:---:|:---:|
-|[<img src="figs/v2_.png" width="400px"/>](https://imgsli.com/NzA3NjE) |[<img src="figs/v4_.png" width="400px"/>](https://imgsli.com/NzA3NjM)|
-|[<img src="figs/v5_.png" width="400px"/>](https://imgsli.com/NzA3NjQ) |[<img src="figs/v6_.png" width="400px"/>](https://imgsli.com/NzA3NjU)|
+![Image description](https://raw.githubusercontent.com/martjay/FBCNN-GUI/refs/heads/main/picture1.png)
+
+![Image description](https://raw.githubusercontent.com/martjay/FBCNN-GUI/refs/heads/main/picture2.png)
 
 ---
 
 ## Introduction to FBCNN Principles (Cited from [jiaxi-jiang/FBCNN](https://github.com/jiaxi-jiang/FBCNN))
-
-### Motivations
-
-JPEG is one of the most widely used image compression algorithms and formats due to its simplicity and fast encoding/decoding speed. However, it is a lossy compression algorithm that may introduce annoying artifacts. Existing JPEG artifact removal methods often have four limitations in practical applications:
-
-* Most existing learning-based methods \[e.g., ARCNN, MWCNN, SwinIR] train a specific model for each quality factor, lacking the flexibility of learning a single model for different JPEG quality factors.
-* DCT-based methods \[e.g., DMCNN, QGAC] require obtaining DCT coefficients or quantization tables as input, which are only stored in the JPEG format. Moreover, when an image is compressed multiple times, only the most recent compression information is stored.
-* Existing blind methods \[e.g., DnCNN, DCSC, QGAC] can only provide deterministic reconstruction results for each input, ignoring the needs of user preference.
-* Existing methods are trained with synthetic images, assuming that low-quality images are only compressed once. **However, most images from the Internet are compressed multiple times.** Although some progress has been made on real recompressed images, such as images from Twitter \[ARCNN, DCSC], there is still a lack of detailed 和 complete research on double JPEG artifact removal.
-
-### Network Architecture
-
-We propose a flexible blind convolutional neural network (FBCNN) that can predict the quality factor of a JPEG image 和 embed it into the decoder to guide image restoration. The quality factor can be manually adjusted for flexible JPEG restoration according to user preference. [architecture](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/architecture.png)
-
-### Analysis of Double JPEG Restoration
-
-#### 1. What is Unaligned Double JPEG Compression?
-
-Unaligned double JPEG compression means that the 8x8 blocks of the two JPEG compressions are not aligned. For example, when we crop a JPEG image 和 save it as JPEG, it is very likely to get an unaligned double JPEG image. [real](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/real.png) There are many other common scenarios, including but not limited to:
-
-* Take a photo with a smartphone 和 upload it to the Internet. Most social media platforms, such as WeChat, Twitter, 和 Facebook, will resize the uploaded image by downsampling 和 then apply JPEG compression to save storage space.
-* Edit a JPEG image that introduces cropping, rotation, or resizing, 和 save it as JPEG.
-* Zoom in/out of a JPEG image, then take a screenshot 和 save it as JPEG.
-* Group different JPEG images 和 save them as a single JPEG image.
-* Most memes are compressed multiple times and the situation is unaligned.
-
-#### 2. Limitations of Existing Blind Methods in Restoring Unaligned Double JPEG Images
-
-We found that when the 8x8 blocks of the two JPEG compressions are unaligned 和 QF1 <= QF2, existing blind methods always fail even if there is only **one pixel shift**. Other situations, such as unaligned double JPEG with QF1>QF2 or aligned double JPEG compression, are actually equivalent to single JPEG compression.
-
-Here is an example of the restoration results of JPEG images by DnCNN 和 QGAC under different degradation settings. '*' means there is a one-pixel shift between the two JPEG blocks.
-
-![lena_doublejpeg](https://raw.githubusercontent.com/jiaxi-jiang/FBCNN/main/figs/lena_doublejpeg.png)
-
-#### 3. Our Solutions
-
-We found that in unaligned double JPEG images with QF1 < QF2, FBCNN always predicts the quality factor as QF2. However, it is the smaller QF1 that dominates the compression artifacts. By manually changing the predicted quality factor to QF1, we can largely improve the results.
-
-Furthermore, to obtain a completely blind model, we propose two blind solutions to address this issue:
-
-(1) FBCNN-D: Train the model using a single JPEG degradation model + automatic dominant QF correction. By leveraging the characteristics of JPEG images, we found that the quality factor of a single JPEG image can be predicted by applying another JPEG compression. The MSE of the two JPEG images is the smallest when QF1 = QF2. In our paper, we also extend this method to the unaligned double JPEG case to obtain a completely blind model.
-
-(2) FBCNN-A: Augment the training data using a double JPEG degradation model, which is given by the formula:
-
-y = JPEG(shift(JPEG(x, QF1)),QF2)
-
-
-By mitigating the misalignment between the training data and real-world JPEG images, FBCNN-A further improves the performance of complex double JPEG restoration. **The proposed double JPEG degradation model can be easily integrated into other image restoration tasks, such as single image super-resolution (e.g., BSRGAN), to achieve better general real-world image restoration performance.**
-
-## 🛠️ Installation
-
-### One-Click Installation
-
-1. Ensure you have Git installed.
-2. Download or clone this repository to your local machine.
-3. Double-click the `1.install&run.bat` file in the repository's root directory.
-
-   This script will automatically perform the following actions:
-    * Check and install Python if it is not installed.
-    * Create and activate a virtual environment named `fbcnn_env`.
-    * Check and install PyTorch if it is not installed, prompting you to choose between the CPU or GPU version.
-    * Set up GitHub and Hugging Face proxies to accelerate downloads.
-    * Configure pip to use the Tsinghua mirror source.
-    * Install the necessary dependency packages for the project.
-    * Run the GUI program (`gui.py`).
 
 ### Manual Installation
 
